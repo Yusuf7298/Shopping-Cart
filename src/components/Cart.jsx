@@ -1,11 +1,12 @@
 import styles from './product.module.css';
 import { Link } from 'react-router-dom';
 
+
 export default function Cart({ cartProducts, removeFromCart }) {
   function handleOrderNow(index) {
     const item = cartProducts[index];
     alert(`Ordered ${item.quantity} x ${item.product.name}!`);
-    removeFromCart(index); // Optionally remove after ordering
+    removeFromCart(index); 
   }
 
   return (

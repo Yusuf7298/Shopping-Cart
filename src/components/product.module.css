@@ -146,6 +146,20 @@
     background-color: #e0a800;
 }
 
+.products .detailsbutton {
+    margin-right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.products .detailsbutton:hover {
+    background-color: #0056b3;
+}
+
 
 .productInfo {
     bottom:0px;
@@ -328,6 +342,104 @@
     color: #555;
     text-align: center;
 }
+
+/* Container for the product details page */
+.productdet {
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Card holding product info */
+.productdetailsCard {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.productdetailsCard:hover {
+  transform: translateY(-3px);
+}
+
+/* Product image */
+.productImages {
+  align-self: center;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Product title */
+.productdetailsCard h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+/* Product details text */
+.productdetailsCard p {
+  margin: 8px 0;
+  color: #555;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Buttons */
+.buttons {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.buttons:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Back button */
+.detailsbutton {
+  display: inline-flex;
+  align-items: center;
+  background-color: #17a2b8;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s;
+  margin-bottom: 20px;
+}
+
+.detailsbutton:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 15px; 
@@ -374,6 +486,7 @@
     }
     .products button,
     .products .removebutton,
+    .products .detailsbutton,
     .products .orderbutton {
         padding: 8px 12px;
         font-size: 0.9em;
@@ -401,6 +514,31 @@
     }
 }
 @media (max-width: 480px) {
+    .productdet {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .productdetailsCard h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .productdetailsCard p {
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttons {
+    width: 100%;
+    justify-content: center;
+  }
     .products {
         grid-template-columns: 1fr; 
     }

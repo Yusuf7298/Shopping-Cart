@@ -1,22 +1,34 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Products from './Products';
-import Cart from './Cart';
-import Contacts from './Contacts';
-import styles from './product.module.css'; // Assuming the CSS module is named NavBar.module.css
+import { Link, useLocation } from "react-router-dom";
+import styles from "./product.module.css";
 
-export default function NavBar({ addToCart, cartProducts, removeFromCart }) {
+export default function NavBar({ cartProducts }) {
+  const location = useLocation();
+  const path = location.pathname;
+
   return (
-    <BrowserRouter>
-      <nav className={styles.navbar}>
-        <Link to="/">Products</Link>
-        <Link to="/cart">Cart ({cartProducts.length})</Link>
-        <Link to="/contacts">Contacts</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Products addToCart={addToCart} />} />
-        <Route path="/cart" element={<Cart cartProducts={cartProducts} removeFromCart={removeFromCart} />} />
-        <Route path="/contacts" element={<Contacts />} />
-      </Routes>
-    </BrowserRouter>
+    <nav className={styles.navbar}>
+      {path === "/" && (
+        <>
+          <a href="#FollowUs">Follow Us</a>
+          <Link to="/cart">Cart ({cartProducts.length})</Link>
+          <Link to="/contacts">Contacts</Link>
+        </>
+      )}
+
+      {path === "/cart" && (
+        <>
+          <Link to="/">Products</Link>
+          <Link to="/contacts">Contacts</Link>
+        </>
+      )}
+
+      {(path === "/contacts" || path.startsWith("/product/")) && (
+        <>
+          <Link to="/">Products</Link>
+          <Link to="/cart">Cart ({cartProducts.length})</Link>
+          <Link to="/contacts">Contacts</Link>
+        </>
+      )}
+    </nav>
   );
 }
